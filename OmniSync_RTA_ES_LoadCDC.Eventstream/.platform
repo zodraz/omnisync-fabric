@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Eventstream",
+    "displayName": "OmniSync_RTA_ES_LoadCDC"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "02b5e628-3d10-8000-44ff-986df2e9eced"
+  }
+}

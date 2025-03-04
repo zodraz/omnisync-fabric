@@ -1,0 +1,56 @@
+table ProductCategory
+	lineageTag: 5c89dcfa-a92c-4f0e-a21c-1f6b88c3722f
+	sourceLineageTag: [dbo].[ProductCategory]
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 37b36850-5f2a-4c65-bada-c13a5cdf2c2e
+		sourceLineageTag: ProductCategoryKey
+		summarizeBy: sum
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: bdde0beb-779b-4295-938e-e8c2eec73187
+		sourceLineageTag: ProductCategoryName
+		summarizeBy: none
+		sourceColumn: ProductCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 7b194583-3824-43dc-8b4b-c6465e41616b
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 914a47ab-94ee-4046-ad9b-cf7f8d16ed1a
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductCategory-124daf41-e66d-4a51-89c5-9bb84fe2d32c = entity
+		mode: directLake
+		source
+			entityName: ProductCategory
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+

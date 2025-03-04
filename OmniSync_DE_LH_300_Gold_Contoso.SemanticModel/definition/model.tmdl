@@ -1,0 +1,28 @@
+model abc68360-15fc-48a5-9cf4-e5ce72871875
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["exec_requests_history","long_running_queries","frequently_run_queries","exec_sessions_history","Product","ProductSubcategory","Store","Geography","Sales","Customer","Currency","ProductCategory","OnlineSales","Promotion","Date","Channel"]
+
+annotation SourceLineageTagType = DatabaseFullyQualifiedName
+
+ref table Product
+ref table ProductSubcategory
+ref table Store
+ref table Geography
+ref table Sales
+ref table Customer
+ref table Currency
+ref table ProductCategory
+ref table OnlineSales
+ref table Promotion
+ref table Date
+ref table Channel
+

@@ -1,0 +1,265 @@
+table Store
+	lineageTag: 97f90f16-a54e-44b6-9885-d5cb161ed1ca
+	sourceLineageTag: [dbo].[Store]
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2444d97a-bb3f-4534-9eda-74f1f51a0eb0
+		sourceLineageTag: StoreKey
+		summarizeBy: sum
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 17f62a36-bee1-4c69-8787-6dbc507bb677
+		sourceLineageTag: GeographyKey
+		summarizeBy: sum
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreManager
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 10b779ea-c65a-4bf1-bfec-27c0b7d5105b
+		sourceLineageTag: StoreManager
+		summarizeBy: sum
+		sourceColumn: StoreManager
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreType
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 90c9b123-fdbb-4854-9f4b-b6c664df8388
+		sourceLineageTag: StoreType
+		summarizeBy: none
+		sourceColumn: StoreType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: ec46e265-a00a-4e96-ac7b-812d69c8e464
+		sourceLineageTag: StoreName
+		summarizeBy: none
+		sourceColumn: StoreName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreDescription
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 65c42b73-ddcd-42b1-8211-282850a6d204
+		sourceLineageTag: StoreDescription
+		summarizeBy: none
+		sourceColumn: StoreDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 6b4b19fe-b086-4ae1-bfae-6f69a600432c
+		sourceLineageTag: Status
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column OpenDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f194b2d6-60d7-483d-ad5f-723342db138a
+		sourceLineageTag: OpenDate
+		summarizeBy: none
+		sourceColumn: OpenDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CloseDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f44759e3-3a69-4b7d-be19-0229baefa3dc
+		sourceLineageTag: CloseDate
+		summarizeBy: none
+		sourceColumn: CloseDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column EntityKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c0004059-5579-4a4b-8d15-9854b3561011
+		sourceLineageTag: EntityKey
+		summarizeBy: sum
+		sourceColumn: EntityKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCode
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: a54a6ba9-7106-4dfa-bd65-2a6af469eb91
+		sourceLineageTag: ZipCode
+		summarizeBy: none
+		sourceColumn: ZipCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ZipCodeExtension
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: be81f295-d86f-487a-b4e5-fb201b951cac
+		sourceLineageTag: ZipCodeExtension
+		summarizeBy: none
+		sourceColumn: ZipCodeExtension
+
+		annotation SummarizationSetBy = Automatic
+
+	column StorePhone
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 111e2e08-a2ba-4a31-8b5a-670deeea5b99
+		sourceLineageTag: StorePhone
+		summarizeBy: none
+		sourceColumn: StorePhone
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreFax
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 627f8d14-4d3f-4229-b3c8-7ed1c269439d
+		sourceLineageTag: StoreFax
+		summarizeBy: none
+		sourceColumn: StoreFax
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine1
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 09b7050d-6bef-4d65-95fe-7cb0e5d69b24
+		sourceLineageTag: AddressLine1
+		summarizeBy: none
+		sourceColumn: AddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine2
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: ee6986a4-a243-427e-9b2b-3253cac072d0
+		sourceLineageTag: AddressLine2
+		summarizeBy: none
+		sourceColumn: AddressLine2
+
+		annotation SummarizationSetBy = Automatic
+
+	column CloseReason
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: b6bddf4d-369f-453c-95bd-c1c033ae14e6
+		sourceLineageTag: CloseReason
+		summarizeBy: none
+		sourceColumn: CloseReason
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeCount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4c81b266-392e-4032-9b11-96e2632c94c7
+		sourceLineageTag: EmployeeCount
+		summarizeBy: sum
+		sourceColumn: EmployeeCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column SellingAreaSize
+		dataType: double
+		sourceProviderType: float
+		lineageTag: fb654a71-c978-49dd-a867-fe1df972792f
+		sourceLineageTag: SellingAreaSize
+		summarizeBy: sum
+		sourceColumn: SellingAreaSize
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column LastRemodelDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 2b4504bb-0a13-43fe-9c22-b0bc18e83c9d
+		sourceLineageTag: LastRemodelDate
+		summarizeBy: none
+		sourceColumn: LastRemodelDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeoLocation
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 75077fbb-a861-4a8b-8381-4d2e2af4ae58
+		sourceLineageTag: GeoLocation
+		summarizeBy: none
+		sourceColumn: GeoLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geometry
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 68c16615-9860-4f92-a257-4529190f9afd
+		sourceLineageTag: Geometry
+		summarizeBy: none
+		sourceColumn: Geometry
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 5f6b4393-ced4-467d-baca-eb1d8f219608
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 9ed0310f-e219-4f52-a8a8-115cb5dffd95
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Store-97d551ff-6880-4e5e-b5c2-cfcb1720b048 = entity
+		mode: directLake
+		source
+			entityName: Store
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+

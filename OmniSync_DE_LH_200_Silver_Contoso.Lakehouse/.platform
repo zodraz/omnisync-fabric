@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Lakehouse",
+    "displayName": "OmniSync_DE_LH_200_Silver_Contoso",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d07bd5b0-1f7c-9d06-4941-d038c0cafa85"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "sources": [
+    {
+      "id": "f7473f78-5f09-433c-bb5d-550858df49a0",
+      "name": "OmniSync-RTA-ES-CustomEndpointLoadCDC",
+      "type": "CustomEndpoint",
+      "properties": {}
+    }
+  ],
+  "destinations": [
+    {
+      "id": "6fd15d9d-b204-4ccf-becd-5802dce431ea",
+      "name": "OmniSync-RTA-ES-GoldLH",
+      "type": "Lakehouse",
+      "properties": {
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "e036efbd-1808-a5ee-499e-3034e855e388",
+        "schema": "dbo",
+        "deltaTable": "ExternalCDC",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "OmniSync_RTA_ES_LoadCDC-stream"
+        }
+      ],
+      "inputSchemas": []
+    }
+  ],
+  "streams": [
+    {
+      "id": "c6e938e7-6338-422a-8c36-10d0ff2fea8f",
+      "name": "OmniSync_RTA_ES_LoadCDC-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "OmniSync-RTA-ES-CustomEndpointLoadCDC"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.0"
+}

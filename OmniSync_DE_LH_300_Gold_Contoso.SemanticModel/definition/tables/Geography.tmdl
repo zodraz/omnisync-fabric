@@ -1,0 +1,96 @@
+table Geography
+	lineageTag: cef18947-baa7-453a-bc98-083be7faaced
+	sourceLineageTag: [dbo].[Geography]
+
+	column GeographyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 106272ee-52b4-4565-89ef-3a4fecd6be33
+		sourceLineageTag: GeographyKey
+		summarizeBy: sum
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyType
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: cadf8cc4-0015-45c8-8dae-5332ce83209d
+		sourceLineageTag: GeographyType
+		summarizeBy: none
+		sourceColumn: GeographyType
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContinentName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 41e6b182-32e7-4e02-8a8d-9aa8cada5443
+		sourceLineageTag: ContinentName
+		summarizeBy: none
+		sourceColumn: ContinentName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CityName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: fc94ee9f-26d2-4880-ae60-29cf27439780
+		sourceLineageTag: CityName
+		summarizeBy: none
+		sourceColumn: CityName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StateProvinceName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 78c5f8e9-ac33-4795-a278-85381c7fc42b
+		sourceLineageTag: StateProvinceName
+		summarizeBy: none
+		sourceColumn: StateProvinceName
+
+		annotation SummarizationSetBy = Automatic
+
+	column RegionCountryName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: b5137e00-dfa3-4bc1-9815-1f8196b374df
+		sourceLineageTag: RegionCountryName
+		summarizeBy: none
+		sourceColumn: RegionCountryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: bdfc4a7f-f106-45d4-9907-235e7727a976
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 4248510e-e21f-4785-a1e3-d8065c5ab36c
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Geography-8c2f7c04-9c7c-49a2-a5b0-8e1d282c08ad = entity
+		mode: directLake
+		source
+			entityName: Geography
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+

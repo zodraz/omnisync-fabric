@@ -1,0 +1,66 @@
+table Channel
+	lineageTag: fb3c01f5-0eb7-4e93-904c-90ffd6dfa96b
+	sourceLineageTag: [dbo].[Channel]
+
+	column ChannelKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7222dbe2-5be1-4550-8da2-c7563ce5e952
+		sourceLineageTag: ChannelKey
+		summarizeBy: sum
+		sourceColumn: ChannelKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: c0aa2fb4-6906-481e-adad-99cea105ac91
+		sourceLineageTag: ChannelName
+		summarizeBy: none
+		sourceColumn: ChannelName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ChannelDescription
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 5ea51a51-d746-4832-a306-fc3029b3d094
+		sourceLineageTag: ChannelDescription
+		summarizeBy: none
+		sourceColumn: ChannelDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 5450bb0f-283f-4063-9352-9e54a96d1912
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 50e2158c-330d-4889-a396-3c3d34dbaa9c
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Channel-819b87e2-57f7-4ba8-b53b-ffb5964912a1 = entity
+		mode: directLake
+		source
+			entityName: Channel
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+

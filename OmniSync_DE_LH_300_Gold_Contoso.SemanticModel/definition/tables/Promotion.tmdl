@@ -1,0 +1,98 @@
+table Promotion
+	lineageTag: 2c403f3c-5a75-4d2e-9e0f-e6db69ad892f
+	sourceLineageTag: [dbo].[Promotion]
+
+	column PromotionKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 99d50707-51f6-4ebd-92c3-50e1c00fdb91
+		sourceLineageTag: PromotionKey
+		summarizeBy: sum
+		sourceColumn: PromotionKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column PromotionName
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: c8d6e4f8-3643-4e3b-8b68-1f31b8434645
+		sourceLineageTag: PromotionName
+		summarizeBy: none
+		sourceColumn: PromotionName
+
+		annotation SummarizationSetBy = Automatic
+
+	column PromotionDescription
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: c6f3a950-7311-4aab-8b76-4264ce0e5bb4
+		sourceLineageTag: PromotionDescription
+		summarizeBy: none
+		sourceColumn: PromotionDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiscountPercent
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 5180b529-e4a8-43ad-92fa-feba81c0d812
+		sourceLineageTag: DiscountPercent
+		summarizeBy: sum
+		sourceColumn: DiscountPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PromotionType
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: c57cbee5-5b9d-418d-b4bc-572cadeec411
+		sourceLineageTag: PromotionType
+		summarizeBy: none
+		sourceColumn: PromotionType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PromotionCategory
+		dataType: string
+		sourceProviderType: varchar
+		lineageTag: 34cc71a7-a4a7-42bc-869a-d81b6ca52c23
+		sourceLineageTag: PromotionCategory
+		summarizeBy: none
+		sourceColumn: PromotionCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 43d73b55-3433-4e3d-b701-cb24d5885137
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 7bf26318-0321-4ae4-81fa-42a27f4c3e86
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Promotion-c7c2ab46-62e4-48de-9e31-69f0b4b1a731 = entity
+		mode: directLake
+		source
+			entityName: Promotion
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation IsTableInBiModel = True
+

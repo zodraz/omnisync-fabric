@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "OmniSync_DE_LH_300_Gold_Contoso"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "72871875-e5ce-9cf4-48a5-15fcabc68360"
+  }
+}
