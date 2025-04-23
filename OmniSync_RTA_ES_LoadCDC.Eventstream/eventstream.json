@@ -1,22 +1,31 @@
 {
   "sources": [
     {
-      "id": "f7473f78-5f09-433c-bb5d-550858df49a0",
-      "name": "OmniSync-RTA-ES-CustomEndpointLoadCDC",
-      "type": "CustomEndpoint",
-      "properties": {}
+      "id": "8c608a05-a3f2-4888-88d2-9d0536584666",
+      "name": "evh-omnisync-prod-ne-01",
+      "type": "AzureEventHub",
+      "properties": {
+        "dataConnectionId": "d2da84be-4136-416a-b17e-7facb703e505",
+        "consumerGroupName": "$Default",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      }
     }
   ],
   "destinations": [
     {
-      "id": "6fd15d9d-b204-4ccf-becd-5802dce431ea",
+      "id": "84ad3f87-f714-46d6-811c-0ac72c466503",
       "name": "OmniSync-RTA-ES-GoldLH",
       "type": "Lakehouse",
       "properties": {
         "workspaceId": "00000000-0000-0000-0000-000000000000",
-        "itemId": "e036efbd-1808-a5ee-499e-3034e855e388",
+        "itemId": "ec5f4e1a-1ec4-8dc3-424c-a524706dc789",
         "schema": "dbo",
-        "deltaTable": "ExternalCDC",
+        "deltaTable": "ExternalCDCv1",
         "inputSerialization": {
           "type": "Json",
           "properties": {
@@ -29,7 +38,63 @@
           "name": "OmniSync_RTA_ES_LoadCDC-stream"
         }
       ],
-      "inputSchemas": []
+      "inputSchemas": [
+        {
+          "name": "OmniSync_RTA_ES_LoadCDC-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "Operation",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Entity",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "Values",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "CreatedDate",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "UpdatedDate",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventProcessedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "PartitionId",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventEnqueuedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "streams": [
@@ -40,7 +105,7 @@
       "properties": {},
       "inputNodes": [
         {
-          "name": "OmniSync-RTA-ES-CustomEndpointLoadCDC"
+          "name": "evh-omnisync-prod-ne-01"
         }
       ]
     }

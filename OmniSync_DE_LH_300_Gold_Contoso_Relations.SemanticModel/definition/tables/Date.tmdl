@@ -1,0 +1,55 @@
+table Date
+	lineageTag: fac738c5-d433-4b8a-ab45-584fbe48654f
+	sourceLineageTag: [dbo].[Date]
+
+	column Datekey
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: e2bc2f81-d4aa-458b-8c94-371ac66b8c14
+		sourceLineageTag: Datekey
+		summarizeBy: none
+		sourceColumn: Datekey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: be9037d0-b88a-4fdf-80ec-65f29d13dda6
+		sourceLineageTag: CalendarYear
+		summarizeBy: sum
+		sourceColumn: CalendarYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarMonthLabel
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 0b805fe5-f2d3-4804-8a51-d71692a16170
+		sourceLineageTag: CalendarMonthLabel
+		summarizeBy: none
+		sourceColumn: CalendarMonthLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	column FiscalQuarterLabel
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1a916cf0-d460-4743-be05-2287b083c36b
+		sourceLineageTag: FiscalQuarterLabel
+		summarizeBy: none
+		sourceColumn: FiscalQuarterLabel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = entity
+		mode: directLake
+		source
+			entityName: Date
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

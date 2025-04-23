@@ -1,0 +1,65 @@
+table ExternalCDC
+	lineageTag: 10f7ad24-66e6-46f9-91fc-15ec7acfeb87
+	sourceLineageTag: [dbo].[ExternalCDC]
+
+	column Operation
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: e0f47b59-76d4-47aa-83ad-ce6c92965326
+		sourceLineageTag: Operation
+		summarizeBy: none
+		sourceColumn: Operation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Entity
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7d02ac39-c8b0-4aec-9166-f970543b9388
+		sourceLineageTag: Entity
+		summarizeBy: none
+		sourceColumn: Entity
+
+		annotation SummarizationSetBy = Automatic
+
+	column Values
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d2bbb623-fc2a-4ef5-9dc4-e3c284cb4995
+		sourceLineageTag: Values
+		summarizeBy: none
+		sourceColumn: Values
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 2d12aa53-141a-4993-b7f7-5a99906e80bc
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 3a07b160-f477-4bfb-82e6-6bf7dddfc599
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ExternalCDC = entity
+		mode: directLake
+		source
+			entityName: ExternalCDC
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

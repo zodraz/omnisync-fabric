@@ -1,0 +1,18 @@
+enable_native_execution_engine: false
+driver_cores: 8
+driver_memory: 56g
+executor_cores: 8
+executor_memory: 56g
+dynamic_executor_allocation:
+  enabled: true
+  min_executors: 1
+  max_executors: 9
+spark_conf:
+  spark.synapse.d: ''
+  spark.fabric.pools.skipStarterPools: true
+  spark.synapse.diagnostic.emitters: LA
+  spark.synapse.diagnostic.emitter.LA.type: AzureLogAnalytics
+  spark.synapse.diagnostic.emitter.LA.categories: Log,EventLog,Metrics
+  spark.synapse.diagnostic.emitter.LA.workspaceId: 1315c71a-9301-4286-9f16-41c7859f4cee
+  spark.synapse.diagnostic.emitter.LA.secret: 4VtX6bbbQ+exsYsiSPrMC2c8MTj4E35BACYoGDqDKahj6HtxFtM9Yd97Ehm9b/NlrrlQ/Q+aK1fVxrwDPde8lA==
+runtime_version: 1.3

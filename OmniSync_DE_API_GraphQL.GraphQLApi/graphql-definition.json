@@ -1,0 +1,309 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/graphqlApi/definition/1.0.0/schema.json",
+  "datasources": [
+    {
+      "objects": [
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "Code": "Code",
+            "Continent": "Continent",
+            "Country": "Country"
+          },
+          "graphqlType": "Continent",
+          "relationships": [],
+          "sourceObject": "dbo.Continent",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "ConversionRate": "ConversionRate",
+            "CreatedDate": "CreatedDate",
+            "CurrencyCode": "CurrencyCode",
+            "CurrencyDescription": "CurrencyDescription",
+            "CurrencyKey": "CurrencyKey",
+            "IsDeleted": "IsDeleted",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "Currency",
+          "relationships": [],
+          "sourceObject": "dbo.Currency",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "AddressLine1": "AddressLine1",
+            "BirthDate": "BirthDate",
+            "CompanyName": "CompanyName",
+            "CreatedDate": "CreatedDate",
+            "CustomerCode": "CustomerCode",
+            "CustomerKey": "CustomerKey",
+            "CustomerType": "CustomerType",
+            "DateFirstPurchase": "DateFirstPurchase",
+            "Education": "Education",
+            "EmailAddress": "EmailAddress",
+            "FirstName": "FirstName",
+            "Gender": "Gender",
+            "GeographyKey": "GeographyKey",
+            "HouseOwnerFlag": "HouseOwnerFlag",
+            "IsDeleted": "IsDeleted",
+            "LastName": "LastName",
+            "MaritalStatus": "MaritalStatus",
+            "NumberCarsOwned": "NumberCarsOwned",
+            "NumberChildrenAtHome": "NumberChildrenAtHome",
+            "Occupation": "Occupation",
+            "Phone": "Phone",
+            "TotalChildren": "TotalChildren",
+            "UpdatedDate": "UpdatedDate",
+            "YearlyIncome": "YearlyIncome"
+          },
+          "graphqlType": "Customer",
+          "relationships": [],
+          "sourceObject": "dbo.Customer",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CalendarMonthLabel": "CalendarMonthLabel",
+            "CalendarYear": "CalendarYear",
+            "CreatedDate": "CreatedDate",
+            "DateKey": "DateKey",
+            "FiscalQuarterLabel": "FiscalQuarterLabel",
+            "IsDeleted": "IsDeleted",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "date",
+          "relationships": [],
+          "sourceObject": "dbo.Date",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CityName": "CityName",
+            "ContinentName": "ContinentName",
+            "CreatedDate": "CreatedDate",
+            "GeographyKey": "GeographyKey",
+            "GeographyType": "GeographyType",
+            "IsDeleted": "IsDeleted",
+            "RegionCountryName": "RegionCountryName",
+            "StateProvinceName": "StateProvinceName",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "Geography",
+          "relationships": [],
+          "sourceObject": "dbo.Geography",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "AvailableForSaleDate": "AvailableForSaleDate",
+            "BrandName": "BrandName",
+            "ClassID": "ClassID",
+            "ClassName": "ClassName",
+            "ColorID": "ColorID",
+            "ColorName": "ColorName",
+            "CreatedDate": "CreatedDate",
+            "CurrencyKey": "CurrencyKey",
+            "IsDeleted": "IsDeleted",
+            "Manufacturer": "Manufacturer",
+            "ProductCode": "ProductCode",
+            "ProductDescription": "ProductDescription",
+            "ProductKey": "ProductKey",
+            "ProductName": "ProductName",
+            "ProductSubcategoryKey": "ProductSubcategoryKey",
+            "Size": "Size",
+            "SizeMeasureName": "SizeMeasureName",
+            "SizeUnitMeasureID": "SizeUnitMeasureID",
+            "Status": "Status",
+            "UnitCost": "UnitCost",
+            "UnitPrice": "UnitPrice",
+            "UpdatedDate": "UpdatedDate",
+            "Weight": "Weight",
+            "WeightMeasureName": "WeightMeasureName",
+            "WeightUnitMeasureID": "WeightUnitMeasureID"
+          },
+          "graphqlType": "Product",
+          "relationships": [],
+          "sourceObject": "dbo.Product",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CreatedDate": "CreatedDate",
+            "IsDeleted": "IsDeleted",
+            "ProductCategoryCode": "ProductCategoryCode",
+            "ProductCategoryKey": "ProductCategoryKey",
+            "ProductCategoryName": "ProductCategoryName",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "ProductCategory",
+          "relationships": [],
+          "sourceObject": "dbo.ProductCategory",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CreatedDate": "CreatedDate",
+            "IsDeleted": "IsDeleted",
+            "ProductCategoryKey": "ProductCategoryKey",
+            "ProductSubcategoryCode": "ProductSubcategoryCode",
+            "ProductSubcategoryKey": "ProductSubcategoryKey",
+            "ProductSubcategoryName": "ProductSubcategoryName",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "ProductSubcategory",
+          "relationships": [],
+          "sourceObject": "dbo.ProductSubcategory",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CreatedDate": "CreatedDate",
+            "CurrencyKey": "CurrencyKey",
+            "DateKey": "DateKey",
+            "ProductKey": "ProductKey",
+            "SalesAmount": "SalesAmount",
+            "SalesKey": "SalesKey",
+            "SalesQuantity": "SalesQuantity",
+            "StoreKey": "StoreKey",
+            "TotalCost": "TotalCost",
+            "UnitCost": "UnitCost",
+            "UnitPrice": "UnitPrice",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "Sales",
+          "relationships": [],
+          "sourceObject": "dbo.Sales",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "CreatedDate": "CreatedDate",
+            "CurrencyKey": "CurrencyKey",
+            "CustomerKey": "CustomerKey",
+            "DateKey": "DateKey",
+            "IsDeleted": "IsDeleted",
+            "ProductKey": "ProductKey",
+            "SalesAmount": "SalesAmount",
+            "SalesOrderLineNumber": "SalesOrderLineNumber",
+            "SalesOrderNumber": "SalesOrderNumber",
+            "SalesOrdersKey": "SalesOrdersKey",
+            "SalesQuantity": "SalesQuantity",
+            "StoreKey": "StoreKey",
+            "TotalCost": "TotalCost",
+            "UnitCost": "UnitCost",
+            "UnitPrice": "UnitPrice",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "SalesOrders",
+          "relationships": [],
+          "sourceObject": "dbo.SalesOrders",
+          "sourceObjectType": "Table"
+        },
+        {
+          "actions": {
+            "Query": "Enabled",
+            "Query_by_pk": "Enabled",
+            "Create": "Enabled",
+            "Update": "Enabled",
+            "Delete": "Enabled"
+          },
+          "fieldMappings": {
+            "AddressLine1": "AddressLine1",
+            "AddressLine2": "AddressLine2",
+            "CreatedDate": "CreatedDate",
+            "EmployeeCount": "EmployeeCount",
+            "GeographyKey": "GeographyKey",
+            "IsDeleted": "IsDeleted",
+            "Latitude": "Latitude",
+            "Longitude": "Longitude",
+            "StoreDescription": "StoreDescription",
+            "StoreFax": "StoreFax",
+            "StoreKey": "StoreKey",
+            "StoreName": "StoreName",
+            "StorePhone": "StorePhone",
+            "StoreType": "StoreType",
+            "StoreTypeID": "StoreTypeID",
+            "UpdatedDate": "UpdatedDate"
+          },
+          "graphqlType": "Store",
+          "relationships": [],
+          "sourceObject": "dbo.Store",
+          "sourceObjectType": "Table"
+        }
+      ],
+      "sourceItemId": "30d6ae7a-5247-4199-9beb-b759e77a34e4",
+      "sourceType": "SqlAnalyticsEndpoint",
+      "sourceWorkspaceId": "6b35ae7a-875a-4e1a-8f60-9f0a22d0e0d0"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+table 'DAX Measures'
+	lineageTag: 6f2b0b89-2c5e-4b61-a0b6-d22d0d55b415
+
+	measure 'Total Sales' = SUM(Sales[Sales])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4d8c7c37-ae3d-4777-b0be-94657e6c619a
+
+	measure 'Store Sales (Selected)' = ```
+			
+			CALCULATE( 
+				[Total Sales] , 
+				FILTER(
+			        ALLSELECTED('Date'[DateKey]),
+			        'Date'[DateKey] <= MAX('Date'[DateKey])),
+			    GROUPBY( Store, Store[StoreName])
+			)
+			```
+		lineageTag: 9ba2c9ad-a2bb-41aa-91a3-a73fc4ebda1b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Year to Date' = CALCULATE([Total Sales], DATESYTD('Date'[DateKey]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 9290225e-416d-40f6-a7a9-91f140bae1e0
+
+	measure 'Sales LY' = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Date'[DateKey]))
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 2cd323d5-ca9d-4e53-84a4-3b252eccd43b
+
+	measure 'Quantity Sold' = SUM(Sales[SalesQuantity])
+		formatString: 0
+		lineageTag: 402547f4-ba10-461a-a862-ea012bafcf9a
+
+	measure 'Profit Margin' = DIVIDE([Net Profit],[Total Sales],0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b1666f72-20f3-4b87-8d58-314c0e262401
+
+	measure COGS = SUM(Sales[TotalCost])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d21bbc94-3170-498a-99d8-e54656d0a7ad
+
+	measure 'Net Profit' = [Total Sales] - [COGS]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 8d442535-a0ee-49ea-a62b-6fcc8bec0b83
+
+	measure 'Net Profits Running Total' =
+			
+			CALCULATE(
+				[Net Profit],
+				FILTER(
+					ALLSELECTED('Date'[DateKey]),
+			        ISONORAFTER('Date'[DateKey], MAX('Date'[DateKey]), DESC)
+			    )
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 7b27cbd2-e0f1-42d5-bfff-5bb707ce2c86
+
+	measure '% Change in Sales' = CALCULATE(DIVIDE([Sales LY],[Total Sales],0)-1, GROUPBY(ProductCategory,ProductCategory[ProductCategoryCode]), GROUPBY(ProductSubcategory, ProductSubcategory[ProductSubcategoryCode]), GROUPBY('Product', 'Product'[ProductCode]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e2c69265-17b4-496d-b235-fa3b0fed5ef7
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 658e04e3-25f6-4d32-bd60-5c3f76ecd23e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DAX Measures' = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 1215e55530084dac9dabb2746ecbce4f
+

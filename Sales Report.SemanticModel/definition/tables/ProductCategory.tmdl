@@ -1,0 +1,72 @@
+table ProductCategory
+	lineageTag: 186d9c0f-7b05-4aef-a853-8edc5d0db9e6
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2f26bd49-6637-4877-914f-0f98b7073324
+		summarizeBy: none
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a151b102-53c8-482c-baad-345d7387f8c1
+		summarizeBy: none
+		sourceColumn: ProductCategoryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: eafa2339-3062-4ed3-a702-5926cd97db9d
+		summarizeBy: none
+		sourceColumn: ProductCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: e4323851-049b-4609-acee-6cfc2ecda231
+		summarizeBy: none
+		sourceColumn: IsDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 7cd025df-9c05-4d4b-b069-509a27fd0513
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 71b9a2cd-5a6e-4f7d-9b21-3a8b9b62814a
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductCategory = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("4zcf2t243paebjgwyd6y3asocu-pkxdk222q4ne5d3at4fcfuha2a.datawarehouse.fabric.microsoft.com", "OmniSync_DE_LH_320_Gold_Contoso"),
+				    dbo_ProductCategory = Source{[Schema="dbo",Item="ProductCategory"]}[Data]
+				in
+				    dbo_ProductCategory
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,66 @@
+table Currency
+	lineageTag: b6349ff1-df47-49df-8909-7a7d24bfc182
+	sourceLineageTag: [dbo].[Currency]
+
+	column CurrencyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5d6b2a17-345d-4f47-b41d-aac32a367031
+		sourceLineageTag: CurrencyKey
+		summarizeBy: none
+		sourceColumn: CurrencyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7dae7183-500f-4380-86f8-a5b862a894cc
+		sourceLineageTag: CurrencyName
+		summarizeBy: none
+		sourceColumn: CurrencyName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f6f124f6-ff5f-443b-99c9-514a03d8a9af
+		sourceLineageTag: CurrencyDescription
+		summarizeBy: none
+		sourceColumn: CurrencyDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: daa81b0f-89ea-4599-a0dd-971b79e9eb52
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 5498a920-8c56-44b4-b8a4-4f5ba2618801
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Currency = entity
+		mode: directLake
+		source
+			entityName: Currency
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

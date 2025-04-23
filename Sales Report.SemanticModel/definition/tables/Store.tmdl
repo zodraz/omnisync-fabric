@@ -1,0 +1,170 @@
+table Store
+	lineageTag: a2c23d08-cb0a-4aa0-8e20-05db897e5788
+
+	column StoreKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: afc40f2a-130e-4fc1-8047-df612fd7283b
+		summarizeBy: none
+		sourceColumn: StoreKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: f42d8d52-115c-4df0-8f69-3aa85e0fb0a3
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c4146299-536a-4039-a266-197780e83870
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreTypeID
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ac833d9c-0155-4ca1-96e7-fdb15839bfd2
+		summarizeBy: count
+		sourceColumn: StoreTypeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreType
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 1c93ed15-d703-4958-bcac-e79025a48492
+		summarizeBy: none
+		sourceColumn: StoreType
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 364b2ef8-c0c7-4bac-bc34-7e97ebc8a490
+		summarizeBy: none
+		sourceColumn: StoreName
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 5aab0bac-9ca0-41a9-90b5-236edceb5fdb
+		summarizeBy: none
+		sourceColumn: StoreDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column StorePhone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 2668b764-b9a8-4b52-a073-55367759205d
+		summarizeBy: none
+		sourceColumn: StorePhone
+
+		annotation SummarizationSetBy = Automatic
+
+	column StoreFax
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7400c7a7-36f9-4986-98a3-98957ba33d07
+		summarizeBy: none
+		sourceColumn: StoreFax
+
+		annotation SummarizationSetBy = Automatic
+
+	column AddressLine1
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3a8a0e26-8aa2-4f6d-8b58-5818f6b24fa0
+		summarizeBy: none
+		sourceColumn: AddressLine1
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeCount
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4ede4a3b-215c-43f6-82b3-63b28c7b3a90
+		summarizeBy: sum
+		sourceColumn: EmployeeCount
+
+		annotation SummarizationSetBy = Automatic
+
+	column Longitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 0ad2a390-27fa-4dc5-9902-5e1f5dc03fe8
+		summarizeBy: sum
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Latitude
+		dataType: double
+		sourceProviderType: float
+		lineageTag: b5abd971-84b3-4bd9-abfb-215971068c97
+		summarizeBy: sum
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: de52435b-2029-4bae-bd65-23f1b0234df0
+		summarizeBy: none
+		sourceColumn: IsDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f610b214-9b10-4878-b194-67e9e76e903b
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: caa006b7-1e77-4d77-98e3-d35b2434e52a
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Store = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("4zcf2t243paebjgwyd6y3asocu-pkxdk222q4ne5d3at4fcfuha2a.datawarehouse.fabric.microsoft.com", "OmniSync_DE_LH_320_Gold_Contoso"),
+				    dbo_Store = Source{[Schema="dbo",Item="Store"]}[Data]
+				in
+				    dbo_Store
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,31 @@
+model Model
+	culture: en-GB
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-GB
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Continent","Currency","Customer","Geography","Product","ProductCategory","ProductSubcategory","Sales","SalesOrders","Store"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.141.1253.0 (25.03)+74f9999a1e95f78c739f3ea2b96ba340e9ba8729
+
+ref table Continent
+ref table Currency
+ref table Customer
+ref table Geography
+ref table Product
+ref table ProductCategory
+ref table ProductSubcategory
+ref table Sales
+ref table SalesOrders
+ref table Store
+ref table 'DAX Measures'
+ref table Date
+ref table DateTableTemplate_ed2e01b7-2169-49a4-a1fe-eb33a746bc5e
+ref table LocalDateTable_98da86f6-280c-4e79-9903-646665bb50d0
+
+ref cultureInfo en-GB
+

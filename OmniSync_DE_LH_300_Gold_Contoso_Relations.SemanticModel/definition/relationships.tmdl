@@ -1,0 +1,60 @@
+relationship 6d283aa6-cbc8-ff40-8204-7af226115630
+	fromColumn: ProductSubcategory.ProductSubcategoryKey
+	toColumn: Product.ProductSubcategoryKey
+
+relationship 3a877cfd-937c-3e22-2491-a264e8b80dc9
+	fromColumn: ProductSubcategory.ProductCategoryKey
+	toColumn: ProductCategory.ProductCategoryKey
+
+relationship 679a0356-1bd1-89c2-3a64-8daa4ba1b87c
+	fromColumn: Product.ProductKey
+	toColumn: SalesTotals.ProductKey
+
+relationship deb6e3d4-b2fd-c5ae-b1a0-476101910feb
+	fromColumn: Promotion.PromotionKey
+	toColumn: SalesTotals.PromotionKey
+
+relationship bbe3d6f3-7aba-4e7f-85dc-7a8bb461046f
+	fromColumn: Promotion.PromotionKey
+	toColumn: SalesDetails.PromotionKey
+
+relationship 207a0dd0-e158-55c6-5465-fd9b228e2d7d
+	fromColumn: Product.ProductKey
+	toColumn: SalesDetails.ProductKey
+
+relationship c38b9c66-5317-138e-63c0-c82ce262b530
+	fromColumn: Store.StoreKey
+	toColumn: SalesDetails.StoreKey
+
+relationship cf0083f5-ab5f-c62f-4711-3c8930a52a02
+	fromColumn: Store.StoreKey
+	toColumn: SalesTotals.StoreKey
+
+relationship e257d24e-ff4c-1786-67a0-e1228c419b4a
+	fromColumn: Customer.CustomerKey
+	toColumn: SalesDetails.CustomerKey
+
+relationship df8a84aa-49c6-024f-6b04-8bb824550a7c
+	fromColumn: Date.Datekey
+	toColumn: SalesTotals.DateKey
+
+relationship 434bfaed-1e6f-0829-a7b1-4709853e860a
+	fromColumn: Date.Datekey
+	toColumn: SalesDetails.DateKey
+
+relationship f1f79696-3bc5-51b6-af4b-ac9de43c8616
+	fromColumn: Currency.CurrencyKey
+	toColumn: SalesDetails.CurrencyKey
+
+relationship d7be37f6-aec9-92c6-7fed-a946c5e02850
+	fromColumn: Currency.CurrencyKey
+	toColumn: SalesTotals.CurrencyKey
+
+relationship 6bbddeda-34c8-ae50-4237-1677a6f08a1d
+	fromColumn: Store.GeographyKey
+	toColumn: Geography.GeographyKey
+
+relationship a1359b71-2369-5c16-d5be-7177eea58097
+	fromColumn: Customer.GeographyKey
+	toColumn: Geography.GeographyKey
+

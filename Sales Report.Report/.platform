@@ -1,12 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "OmniSync_DE_NB_320_Gold_LoadContoso",
-    "description": "New notebook"
+    "type": "Report",
+    "displayName": "Sales Report"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "2fe5d8ba-c7c9-8e37-4f25-d8a32e9ec9dd"
+    "logicalId": "ef8b134c-92d9-8c6f-478b-6e5c1a5eb68c"
   }
 }

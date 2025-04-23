@@ -1,0 +1,83 @@
+table Currency
+	lineageTag: bd39d58d-dafc-4b1d-8d3c-ed04e67236bc
+
+	column CurrencyKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5138888f-1432-4f9a-a24d-db9ebfdb5443
+		summarizeBy: none
+		sourceColumn: CurrencyKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7c8cf4c3-9b78-42d4-ba5c-0e06ef21758d
+		summarizeBy: none
+		sourceColumn: CurrencyCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrencyDescription
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: cb10a2d8-aebb-46c2-a653-01e55dcfd31b
+		summarizeBy: none
+		sourceColumn: CurrencyDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConversionRate
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 092abbe9-a8e3-454d-a216-8a7e11e8024a
+		summarizeBy: none
+		sourceColumn: ConversionRate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IsDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 04b55789-fb9a-4d98-a770-5f08ea6960e3
+		summarizeBy: none
+		sourceColumn: IsDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 82b63c67-9644-4416-817b-4dc5d58af290
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 931406b2-1834-4137-9446-dbf67f795dd4
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Currency = m
+		mode: directQuery
+		source =
+				let
+				    Source = Sql.Database("4zcf2t243paebjgwyd6y3asocu-pkxdk222q4ne5d3at4fcfuha2a.datawarehouse.fabric.microsoft.com", "OmniSync_DE_LH_320_Gold_Contoso"),
+				    dbo_Currency = Source{[Schema="dbo",Item="Currency"]}[Data]
+				in
+				    dbo_Currency
+
+	annotation PBI_ResultType = Table
+

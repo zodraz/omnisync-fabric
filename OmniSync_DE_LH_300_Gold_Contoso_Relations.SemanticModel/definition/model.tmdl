@@ -1,0 +1,34 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.141.7588.2 (Main)+d456e3d3aed26a8e6bb407d2027563577abbbc49
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation __PBIService_Versioning_SaveVersion = 3346cf48-16b1-437e-94f4-4870907dfbe0
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
+
+ref table Product
+ref table ProductSubcategory
+ref table Store
+ref table Geography
+ref table SalesTotals
+ref table Customer
+ref table Currency
+ref table ProductCategory
+ref table SalesDetails
+ref table Promotion
+ref table Date
+ref table ExternalCDC
+
+ref cultureInfo en-US
+
