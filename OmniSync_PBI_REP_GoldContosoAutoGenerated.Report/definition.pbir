@@ -1,8 +1,0 @@
-{
-  "version": "4.0",
-  "datasetReference": {
-    "byPath": {
-      "path": "../OmniSync_DE_LH_300_Gold_Contoso.SemanticModel"
-    }
-  }
-}
