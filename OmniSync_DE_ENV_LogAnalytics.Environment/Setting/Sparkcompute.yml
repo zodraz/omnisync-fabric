@@ -13,6 +13,6 @@ spark_conf:
   spark.synapse.diagnostic.emitters: LA
   spark.synapse.diagnostic.emitter.LA.type: AzureLogAnalytics
   spark.synapse.diagnostic.emitter.LA.categories: Log,EventLog,Metrics
-  spark.synapse.diagnostic.emitter.LA.workspaceId: 1315c71a-9301-4286-9f16-41c7859f4cee
-  spark.synapse.diagnostic.emitter.LA.secret: 4VtX6bbbQ+exsYsiSPrMC2c8MTj4E35BACYoGDqDKahj6HtxFtM9Yd97Ehm9b/NlrrlQ/Q+aK1fVxrwDPde8lA==
+  spark.synapse.diagnostic.emitter.LA.workspaceId: 04a16dd4-1372-4ffd-a608-396741fa52fe
+  spark.synapse.diagnostic.emitter.LA.secret: Cx2GzazKweLK9VcbpPYmpMr8EyQPdq3qX5ZrUcw250c6VhWlLzMtHCOVvp1FWPY0OIvcvASchIhnlpqIVNi1mQ==
 runtime_version: 1.3

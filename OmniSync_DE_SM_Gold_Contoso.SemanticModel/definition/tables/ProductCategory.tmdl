@@ -1,0 +1,77 @@
+table ProductCategory
+	lineageTag: b65565d9-468b-417f-919e-acbab5a3c560
+	sourceLineageTag: [dbo].[ProductCategory]
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 9f2fffe8-b4d0-4195-9017-705be0a5cd48
+		sourceLineageTag: ProductCategoryKey
+		summarizeBy: none
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 3ddbed34-a367-41b3-9b37-dd1e9a3878c9
+		sourceLineageTag: ProductCategoryCode
+		summarizeBy: none
+		sourceColumn: ProductCategoryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 93ebf921-a20c-42e0-83a0-77b9c04f864a
+		sourceLineageTag: ProductCategoryName
+		summarizeBy: none
+		sourceColumn: ProductCategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 84054d4e-7246-4a37-ba51-7285e07b9ac8
+		sourceLineageTag: IsDeleted
+		summarizeBy: none
+		sourceColumn: IsDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: f45f3421-2e2f-42f0-a01e-1c680333d2ef
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 6cbd32fc-479a-4409-9792-cc9ceacb592a
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductCategory = entity
+		mode: directLake
+		source
+			entityName: ProductCategory
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

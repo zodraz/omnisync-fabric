@@ -1,34 +1,29 @@
-# Fabric notebook source
+#!/usr/bin/env python
+# coding: utf-8
 
-# METADATA ********************
+# ## OmniSync_DE_NB_LoadCDC
+# 
+# New notebook
 
-# META {
-# META   "kernel_info": {
-# META     "name": "synapse_pyspark"
-# META   },
-# META   "dependencies": {
-# META     "lakehouse": {
-# META       "default_lakehouse": "706dc789-a524-424c-8dc3-1ec4ec5f4e1a",
-# META       "default_lakehouse_name": "OmniSync_DE_LH_320_Gold_Contoso",
-# META       "default_lakehouse_workspace_id": "6b35ae7a-875a-4e1a-8f60-9f0a22d0e0d0",
-# META       "known_lakehouses": []
-# META     },
-# META     "environment": {
-# META       "environmentId": "4d7e0d58-dbbd-aef9-4745-975b73f3f167",
-# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
-# META     }
-# META   }
-# META }
+# In[1]:
 
-# CELL ********************
 
 from datetime import datetime
+import sys
+from pyspark.sql import SparkSession
 from dateutil import parser
 import decimal
 from pyspark.sql.types import MapType,StringType,IntegerType,TimestampType,DoubleType,FloatType,DecimalType, \
                               BooleanType, BinaryType, StructType,StructField
 import pandas as pd
 import notebookutils
+import traceback
+from pyspark.sql.types import * 
+from delta.tables import *
+from pyspark.sql.functions import *
+import pandas as pd
+from pyspark.sql.functions import from_json
+import json
 import traceback
 
 spark.conf.set('spark.sql.caseSensitive', True)
@@ -783,111 +778,95 @@ def deleteRelatedCustomerEntities(logger,customerKey):
         
 
 
-# METADATA ********************
+# In[5]:
 
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
 
-# CELL ********************
 
-from pyspark.sql.types import * 
-from delta.tables import *
-from pyspark.sql.functions import *
-import pandas as pd
-from pyspark.sql.functions import from_json
-import json
-import traceback
 
-spark.conf.set("spark.sql.execution.arrow.enabled", "true")
-logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.omnisync.Logger")
+if __name__ == "__main__":
+    spark = SparkSession.builder.appName("MyApp").getOrCreate()
 
-externalCDCSchema = spark.read.parquet("Tables/dbo/ExternalCDCv1").schema
+    spark.conf.set("spark.sql.execution.arrow.enabled", "true")
+    logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.omnisync.Logger")
 
-df = spark.readStream.schema(externalCDCSchema).format("parquet").option("path", "Tables/dbo/ExternalCDCv1").load()
+    externalCDCSchema = spark.read.parquet("Tables/dbo/ExternalCDCv1").schema
 
-def sendToSinkTable(df, epoch_id):
-    
-    print('------------------------------Stream received---------------------------------------')
-    
-    # try:
-    dataCollect = df.collect()
-    for row in dataCollect:
-        logger.info(row)
-        try:
-            operation=row.Operation.lower()
-            print('Operation:' + operation)
-            entity=row.Entity
-            print('Entity:' + entity)
-            values = row.Values
-            fixedValues=fixJson(values)
-            if fixedValues is None:
-                print("Values on row are null...")
-                continue
-            dict = json.loads(fixedValues)
-            naturalKey = getNaturalKey(entity)
-            pk = getPrimaryKey(entity) 
-            salesForceId = dict['SalesForceId'] if 'SalesForceId' in dict else ""
-            SAPId = dict['SAPId'] if 'SAPId' in dict else "" 
-            D365Id = dict['D365Id'] if 'D365Id' in dict else "" 
-            # Default natural key to SalesForceId or SAPId or D365
-            if naturalKey not in dict:
-                 if 'SalesForceId' in dict:
-                    naturalKey =  'SalesForceId'
-                 elif 'SAPId' in dict:
-                    naturalKey =  'SAPId'
-                 elif 'D365Id' in dict:
-                    naturalKey =  'D365Id'
+    df = spark.readStream.schema(externalCDCSchema).format("parquet").option("path", "Tables/dbo/ExternalCDCv1").load()
 
-            if operation == 'create':                        
-                logger.info("Create key to check with SalesForceId: " + salesForceId + " and/or SAPId: " +  SAPId + " and/or D365Id: " +  D365Id )
-                print("Create key to check with SalesForceId: " + salesForceId + " and/or SAPId: " +  SAPId + " and/or D365Id: " +  D365Id )
-
-                entityRow = getRowToCreate(entity, dict)
-                if (entityRow == None):
-                    logger.info("Could not decode entity: " + entity )
-                    print("Could not decode entity: " + entity )
+    def sendToSinkTable(df, epoch_id):
+        
+        print('------------------------------Stream received---------------------------------------')
+        
+        # try:
+        dataCollect = df.collect()
+        for row in dataCollect:
+            logger.info(row)
+            try:
+                operation=row.Operation.lower()
+                print('Operation:' + operation)
+                entity=row.Entity
+                print('Entity:' + entity)
+                values = row.Values
+                fixedValues=fixJson(values)
+                if fixedValues is None:
+                    print("Values on row are null...")
                     continue
+                dict = json.loads(fixedValues)
+                naturalKey = getNaturalKey(entity)
+                pk = getPrimaryKey(entity) 
+                salesForceId = dict['SalesForceId'] if 'SalesForceId' in dict else ""
+                SAPId = dict['SAPId'] if 'SAPId' in dict else "" 
+                D365Id = dict['D365Id'] if 'D365Id' in dict else "" 
+                # Default natural key to SalesForceId or SAPId or D365
+                if naturalKey not in dict:
+                    if 'SalesForceId' in dict:
+                        naturalKey =  'SalesForceId'
+                    elif 'SAPId' in dict:
+                        naturalKey =  'SAPId'
+                    elif 'D365Id' in dict:
+                        naturalKey =  'D365Id'
 
-                if checkIfInsertNeeded(dict, entity):
-                    insertEntity(entityRow, entity)
-                    logger.info('Created ' + entity + " with id: " + getPrimaryKeyValue(entityRow))
-                    print('Created ' + entity + " with id: " + getPrimaryKeyValue(entityRow))
-                    mergeMasterDataMapping(dict, getPrimaryKeyValue(entityRow), entity, dict[naturalKey], False)
-                    if entity=='SalesOrders':
-                        materializeSales(operation, dict)
+                if operation == 'create':                        
+                    logger.info("Create key to check with SalesForceId: " + salesForceId + " and/or SAPId: " +  SAPId + " and/or D365Id: " +  D365Id )
+                    print("Create key to check with SalesForceId: " + salesForceId + " and/or SAPId: " +  SAPId + " and/or D365Id: " +  D365Id )
+
+                    entityRow = getRowToCreate(entity, dict)
+                    if (entityRow == None):
+                        logger.info("Could not decode entity: " + entity )
+                        print("Could not decode entity: " + entity )
+                        continue
+
+                    if checkIfInsertNeeded(dict, entity):
+                        insertEntity(entityRow, entity)
+                        logger.info('Created ' + entity + " with id: " + getPrimaryKeyValue(entityRow))
+                        print('Created ' + entity + " with id: " + getPrimaryKeyValue(entityRow))
+                        mergeMasterDataMapping(dict, getPrimaryKeyValue(entityRow), entity, dict[naturalKey], False)
+                        if entity=='SalesOrders':
+                            materializeSales(operation, dict)
+                    else:
+                        logger.warn(entity + ' with id to check with SalesForceId: ' + salesForceId + ' and/or SAPId: ' +  SAPId + ' and/or D365Id: ' +  D365Id  + \
+                                    ' already in the system. Skipping insert...')
+                        print(entity + ' with id to check with SalesForceId: ' + salesForceId + ' and/or SAPId: ' +  SAPId + ' and/or D365Id: ' +  D365Id  + \
+                                    ' already in the system. Skipping insert...')
+                        
+                elif operation == 'update' or operation == 'delete':
+                    mergeOperation(operation, logger, entity, dict, pk, naturalKey)             
                 else:
-                    logger.warn(entity + ' with id to check with SalesForceId: ' + salesForceId + ' and/or SAPId: ' +  SAPId + ' and/or D365Id: ' +  D365Id  + \
-                                ' already in the system. Skipping insert...')
-                    print(entity + ' with id to check with SalesForceId: ' + salesForceId + ' and/or SAPId: ' +  SAPId + ' and/or D365Id: ' +  D365Id  + \
-                                ' already in the system. Skipping insert...')
-                    
-            elif operation == 'update' or operation == 'delete':
-                mergeOperation(operation, logger, entity, dict, pk, naturalKey)             
-            else:
-                logger.error('Error. Operation not recognized: ' + operation)
-                print('Error. Operation not recognized: ' + operation)
-        except Exception as ex:
-            print("-----------------------Error-------------------------")
-            handleException(logger, ex)
+                    logger.error('Error. Operation not recognized: ' + operation)
+                    print('Error. Operation not recognized: ' + operation)
+            except Exception as ex:
+                print("-----------------------Error-------------------------")
+                handleException(logger, ex)
 
-logger.info('------------------------------Starting---------------------------------------')
-print('------------------------------Starting---------------------------------------')
+    logger.info('------------------------------Starting---------------------------------------')
+    print('------------------------------Starting---------------------------------------')
 
-df.writeStream \
-    .outputMode("append") \
-    .trigger(processingTime='10 seconds') \
-    .option("checkpointLocation","Files/__cdc_checkpointv10") \
-    .format("delta") \
-    .foreachBatch(sendToSinkTable) \
-    .start() \
-    .awaitTermination()
+    df.writeStream \
+        .outputMode("append") \
+        .trigger(processingTime='10 seconds') \
+        .option("checkpointLocation","Files/__cdc_checkpointv10") \
+        .format("delta") \
+        .foreachBatch(sendToSinkTable) \
+        .start() \
+        .awaitTermination()
 
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }

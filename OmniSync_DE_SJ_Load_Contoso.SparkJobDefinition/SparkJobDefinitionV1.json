@@ -1,0 +1,17 @@
+{
+  "executableFile": "OmniSync_DE_NB_LoadCDC.py",
+  "defaultLakehouseArtifactId": "706dc789-a524-424c-8dc3-1ec4ec5f4e1a",
+  "mainClass": "",
+  "additionalLakehouseIds": [],
+  "retryPolicy": {
+    "policyType": "SimpleRetry",
+    "policyProperties": {
+      "retryCount": 1,
+      "intervalBetweenRetriesInSeconds": 10
+    }
+  },
+  "commandLineArguments": "",
+  "additionalLibraryUris": [],
+  "language": "Python",
+  "environmentArtifactId": null
+}

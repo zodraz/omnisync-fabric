@@ -24,7 +24,7 @@
 
 # Welcome to your new notebook
 # Type here in the cell editor to add code!
-df = spark.sql("SELECT * FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.ExternalCDC LIMIT 1000")
+df = spark.sql("SELECT * FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.ExternalCDCv1 LIMIT 1000")
 display(df)
 
 # METADATA ********************
@@ -511,42 +511,6 @@ display(df)
 # CELL ********************
 
 df = spark.sql("SELECT * FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.Store WHERE StoreKey=199 LIMIT 1000")
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-df = spark.sql("SELECT * FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.Store WHERE StoreName LIKE '%Albany%' LIMIT 1000")
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# MAGIC %%sql
-# MAGIC SELECT distinct storekey FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.Sales
-
-# METADATA ********************
-
-# META {
-# META   "language": "sparksql",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-df = spark.sql("SELECT * FROM OmniSync_DE_LH_320_Gold_Contoso.dbo.Sales  WHERE CustomerKey=18877 LIMIT 1000")
 display(df)
 
 # METADATA ********************

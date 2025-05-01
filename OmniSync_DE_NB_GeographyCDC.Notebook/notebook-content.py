@@ -48,7 +48,7 @@ import urllib.parse
 logger = sc._jvm.org.apache.log4j.LogManager.getLogger("com.omnisync.Logger")
 
 if (latitude == None and longitude == None) or (latitude == '' and longitude == '') or \
-    addresline1 == None or addressline1 == '':
+    addressline1 == None or addressline1 == '':
     notebookutils.notebook.exit(None)
 
 key_vault_uri = 'https://kv-omnisync-prod-ne-09.vault.azure.net/'

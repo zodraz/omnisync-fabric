@@ -84,9 +84,9 @@ dim_currency = dim_currency.select("CurrencyKey", "CurrencyCode", "CurrencyDescr
 dim_currency.write.mode("overwrite").option("overwriteSchema", "true").format("delta")\
             .saveAsTable("OmniSync_DE_LH_200_Silver_Contoso.dbo.DimCurrency")
 
-mapping_rows = [(1, 7, '01LKB000000IpKu2AK' , '16f35145-2412-f011-998b-7c1e52fba29f', None, 'Currency', 'EUR' , False, datetime.now(), None),
-                (2, 1, '01LKB000000IpKz2AK' , '6f7c960f-3c1d-f011-9989-002248a3370c', None, 'Currency', 'USD' , False, datetime.now(), None),
-                (3, 20, '01LKB000000IpL42AK' , '2087d443-3c1d-f011-9989-002248a3370c', None, 'Currency', 'GBP' , False, datetime.now(), None)]
+mapping_rows = [(1, 7, '01LWU000002zwab2AA' , '16f35145-2412-f011-998b-7c1e52fba29f', None, 'Currency', 'EUR' , False, datetime.now(), None),
+                (2, 1, '01LWU000002zwcD2AQ' , '6f7c960f-3c1d-f011-9989-002248a3370c', None, 'Currency', 'USD' , False, datetime.now(), None),
+                (3, 20, '01LWU000002zwdp2AA' , '2087d443-3c1d-f011-9989-002248a3370c', None, 'Currency', 'GBP' , False, datetime.now(), None)]
 
 df_mapping = spark.createDataFrame(mapping_rows, masterDataMappingSchema)
 # Write the empty DataFrame to create the Delta table
@@ -161,8 +161,8 @@ df_customer = spark.createDataFrame(staged_rows, dim_customer.schema)
 # Write the empty DataFrame to create the Delta table
 df_customer.write.mode("append").format("delta").saveAsTable("OmniSync_DE_LH_200_Silver_Contoso.dbo.DimCustomer")
 
-mapping_rows = [(4, nextCustomerValue, '001KB000009ROH5YAO' , '6622d6cb-3c1d-f011-9989-002248a3370c', None, 'Customer', '111111' , False, datetime.now(), None),
-                (5, buyitberlin_cutomer_id, '001KB000009ROEzYAO' , '4ed67d9b-3d1d-f011-9989-002248a3370c', None, 'Customer', '123123' , False, datetime.now(), None)]
+mapping_rows = [(4, nextCustomerValue, '001WU00000ulBm9YAE' , '6622d6cb-3c1d-f011-9989-002248a3370c', None, 'Customer', '111111' , False, datetime.now(), None),
+                (5, buyitberlin_cutomer_id, '001WU00000ulDHhYAM' , '4ed67d9b-3d1d-f011-9989-002248a3370c', None, 'Customer', '123123' , False, datetime.now(), None)]
 
 df_mapping = spark.createDataFrame(mapping_rows, masterDataMappingSchema)
 # Write the empty DataFrame to create the Delta table
@@ -324,16 +324,16 @@ dim_product_category = dim_product_category.withColumnRenamed('LoadDate', 'Creat
 dim_product_category = dim_product_category.withColumnRenamed('UpdateDate', 'UpdatedDate')
 dim_product_category = dim_product_category.withColumn("IsDeleted", lit(False))
 
-salesforce_categories = [(9,'09','Beverages', datetime.now(), datetime.now(), False),
-            (10,'10','Chips', datetime.now(), datetime.now(), False),
-            (11,'11','Detergent', datetime.now(), datetime.now(),False),
-            (12,'12','Frozen', datetime.now(), datetime.now(), False),
-            (13,'13','Hygiene', datetime.now(), datetime.now(), False),
-            (14,'14','Snacks', datetime.now(), datetime.now(), False)]
+# salesforce_categories = [(9,'09','Beverages', datetime.now(), datetime.now(), False),
+#             (10,'10','Chips', datetime.now(), datetime.now(), False),
+#             (11,'11','Detergent', datetime.now(), datetime.now(),False),
+#             (12,'12','Frozen', datetime.now(), datetime.now(), False),
+#             (13,'13','Hygiene', datetime.now(), datetime.now(), False),
+#             (14,'14','Snacks', datetime.now(), datetime.now(), False)]
 
 #create dataframe and append current datetime
-salesforce_categories_df = spark.createDataFrame(salesforce_categories,dim_product_category.schema)
-dim_product_category = dim_product_category.union(salesforce_categories_df)
+# salesforce_categories_df = spark.createDataFrame(salesforce_categories,dim_product_category.schema)
+# dim_product_category = dim_product_category.union(salesforce_categories_df)
 
 dim_product_category = dim_product_category.select( "ProductCategoryKey", "ProductCategoryCode", "ProductCategoryName",
                               "IsDeleted", "CreatedDate", "UpdatedDate")
@@ -367,12 +367,14 @@ subcat_schema = StructType([ \
                 StructField("IsDeleted", BooleanType(), True)
             ])
 
-salesforce_subcategories = [(50,'50','Beverages', 9, datetime.now(), datetime.now(), False),
-            (51,'51','Chips', 10, datetime.now(), datetime.now(), False),
-            (52,'52','Detergent', 11, datetime.now(), datetime.now(), False),
-            (53,'53','Frozen', 12, datetime.now(), datetime.now(), False),
-            (54,'54','Hygiene', 13, datetime.now(), datetime.now(), False),
-            (55,'55','Snacks', 14, datetime.now(), datetime.now(), False)]
+salesforce_subcategories = [(50,'50','Audio', 1, datetime.now(), datetime.now(), False),
+            (51,'51','TV and Video', 2, datetime.now(), datetime.now(), False),
+            (52,'52','Computers', 3, datetime.now(), datetime.now(), False),
+            (53,'53','Cameras and camcorders', 4, datetime.now(), datetime.now(), False),
+            (54,'54','Cell phones', 5, datetime.now(), datetime.now(), False),
+            (55,'55','Music, Movies and Audio Books', 6, datetime.now(), datetime.now(), False),
+            (56,'56','Games and Toys', 7, datetime.now(), datetime.now(), False),
+            (57,'57','Home Appliances', 8, datetime.now(), datetime.now(), False)]
 
 #create dataframe and append current datetime
 salesforce_subcategories_df = spark.createDataFrame(salesforce_subcategories,subcat_schema)
@@ -384,6 +386,18 @@ salesforce_subcategories_df = salesforce_subcategories_df.select( "ProductSubcat
 
 dim_product_subcategory.write.mode("overwrite").option("overwriteSchema", "true").format("delta") \
                        .saveAsTable("OmniSync_DE_LH_200_Silver_Contoso.dbo.DimProductSubcategory")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = spark.sql("SELECT * FROM OmniSync_DE_LH_200_Silver_Contoso.dbo.DimProductCategory LIMIT 1000")
+display(df)
 
 # METADATA ********************
 
@@ -413,9 +427,9 @@ dim_store = dim_store.withColumn("StoreTypeID",  when(dim_store.StoreType.contai
                                                 .when(dim_store.StoreType.contains("Catalog"), 2) \
                                                 .when(dim_store.StoreType.contains("Online"), 3) \
                                                 .when(dim_store.StoreType.contains("Reseller"), 4) \
-                                                .when(dim_store.StoreType.contains("Flagship"), 5) \
-                                                .when(dim_store.StoreType.contains("Virtual"), 6) \
-                                                .when(dim_store.StoreType.contains("Van"), 7) \
+                                                # .when(dim_store.StoreType.contains("Flagship"), 5) \
+                                                # .when(dim_store.StoreType.contains("Virtual"), 6) \
+                                                # .when(dim_store.StoreType.contains("Van"), 7) \
                                                 .otherwise(dim_store.StoreType))
 dim_store = dim_store.withColumn("StoreTypeID", dim_store["StoreTypeID"].cast(IntegerType()))
 dim_store = dim_store.withColumn("Longitude", dim_store["Longitude"].cast(DoubleType()))

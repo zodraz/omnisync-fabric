@@ -1,0 +1,88 @@
+table ProductSubcategory
+	lineageTag: 81e6c76d-0717-448e-a8ae-13eb5de9c296
+	sourceLineageTag: [dbo].[ProductSubcategory]
+
+	column ProductSubcategoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2e88184a-ffe6-4beb-b709-8010408dc2cd
+		sourceLineageTag: ProductSubcategoryKey
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategoryCode
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a1f996d8-37b5-4c53-8bf8-72d651559877
+		sourceLineageTag: ProductSubcategoryCode
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductSubcategoryName
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fac6e4b2-8982-4f7c-99d3-c9a3c9200562
+		sourceLineageTag: ProductSubcategoryName
+		summarizeBy: none
+		sourceColumn: ProductSubcategoryName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductCategoryKey
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 855109be-86e8-4cc7-b816-28bf9d933301
+		sourceLineageTag: ProductCategoryKey
+		summarizeBy: none
+		sourceColumn: ProductCategoryKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 5970748e-ddfc-4ca8-8c2b-5fc240fad9d2
+		sourceLineageTag: CreatedDate
+		summarizeBy: none
+		sourceColumn: CreatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column UpdatedDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 11cfb877-31c2-4f84-bc46-957f03974e85
+		sourceLineageTag: UpdatedDate
+		summarizeBy: none
+		sourceColumn: UpdatedDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsDeleted
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 95377961-e61e-42b5-806a-2cf874e15b4e
+		sourceLineageTag: IsDeleted
+		summarizeBy: none
+		sourceColumn: IsDeleted
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ProductSubcategory = entity
+		mode: directLake
+		source
+			entityName: ProductSubcategory
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

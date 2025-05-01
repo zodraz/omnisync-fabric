@@ -1,11 +1,11 @@
 {
   "sources": [
     {
-      "id": "8c608a05-a3f2-4888-88d2-9d0536584666",
-      "name": "evh-omnisync-prod-ne-01",
+      "id": "26975e7e-00c9-429f-8480-1c665554c380",
+      "name": "AzureEventHub",
       "type": "AzureEventHub",
       "properties": {
-        "dataConnectionId": "d2da84be-4136-416a-b17e-7facb703e505",
+        "dataConnectionId": "c60f3706-91bd-4a18-9a24-adf5a8650885",
         "consumerGroupName": "$Default",
         "inputSerialization": {
           "type": "Json",
@@ -26,6 +26,7 @@
         "itemId": "ec5f4e1a-1ec4-8dc3-424c-a524706dc789",
         "schema": "dbo",
         "deltaTable": "ExternalCDCv1",
+        "minimumRows": 1000,
         "inputSerialization": {
           "type": "Json",
           "properties": {
@@ -105,7 +106,7 @@
       "properties": {},
       "inputNodes": [
         {
-          "name": "evh-omnisync-prod-ne-01"
+          "name": "AzureEventHub"
         }
       ]
     }
